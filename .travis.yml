@@ -11,7 +11,7 @@ after_success:
     - docker build -t hackerman4047/multi-server ./server
     - docker build -t hackerman4047/multi-nginx ./nginx
     - docker build -t hackerman4047/multi-worker ./worker
-    # login to docker cli
+    # login to docker cli to push our images
     - echo "$docker_password" | docker login -u "$docker_id" --password-stdin
     - docker push hackerman4047/multi-client
     - docker push hackerman4047/multi-server
