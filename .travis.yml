@@ -3,7 +3,7 @@ sudo: required
 services:
     - docker
 before_install:
-    - docker build -t hackerman4047/react-test -f ./client/Dockerfile.dev
+    - docker build -t hackerman4047/react-test -f ./client/Dockerfile.dev ./client
 script:
     - docker run -e CI=true hackerman4047/react-test npm test
 after_success:
@@ -17,4 +17,3 @@ after_success:
     - docker push hackerman4047/multi-server
     - docker push hackerman4047/multi-nginx
     - docker push hackerman4047/multi-worker
-    
