@@ -17,3 +17,15 @@ after_success:
     - docker push hackerman4047/multi-server
     - docker push hackerman4047/multi-nginx
     - docker push hackerman4047/multi-worker
+deploy:
+    edge: true
+    provider: elasticbeanstalk
+    region: us-east-2
+    app: multi-docker
+    env: MultiDocker-env
+    bucket_name: elasticbeanstalk-us-east-2-323145758205
+    bucker_path: docker-multi
+    on:
+        branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY

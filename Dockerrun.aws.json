@@ -1,0 +1,36 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions":[
+        {
+            "name":"client",
+            "image":"hackerman4047/multi-client",
+            "hostname": "client",
+            "essential":"false"
+        },
+        {
+            "name": "server",
+            "image":"hackerman4047/multi-server",
+            "hostname": "api",
+            "essential":"false"
+        },
+        {
+            "name": "worker",
+            "image":"hackerman4047/multi-worker",
+            "hostname": "worker",
+            "essential":"false"
+        },
+        {
+            "name": "nginx",
+            "image":"hackerman4047/multi-nginx",
+            "hostname": "nginx",
+            "essential":"true",
+            "portMappings":[
+                {
+                    "hostPort":80,
+                    "containerPort":80
+                }
+            ],
+            "links":["client","server"] 
+        }
+    ]
+}
